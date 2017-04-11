@@ -1,16 +1,27 @@
 package com.eightyeight.papillon;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 /**
  * Created by papillon on 4/10/2017.
  */
+@XmlRootElement
 public class Message {
 
     private long id;
     private String message;
     private Date created;
     private String author;
+
+    public Message(long id, String message,String author) {
+        this.id = id;
+        this.message = message;
+        this.created = new Date();
+        this.author = author;
+    }
+
+    public Message(){}
 
     public long getId() {
         return id;
