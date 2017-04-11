@@ -1,4 +1,4 @@
-package com.eightyeight.papillon;
+package com.eightyeight.papillon.endpoints;
 
 
 /**

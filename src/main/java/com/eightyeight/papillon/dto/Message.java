@@ -1,4 +1,4 @@
-package com.eightyeight.papillon;
+package com.eightyeight.papillon.dto;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;

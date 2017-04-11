@@ -1,4 +1,7 @@
-package com.eightyeight.papillon;
+package com.eightyeight.papillon.endpoints;
+
+import com.eightyeight.papillon.service.MessageService;
+import com.eightyeight.papillon.dto.Message;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
