@@ -5,6 +5,7 @@ import com.eightyeight.papillon.dto.Message;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -22,4 +23,12 @@ public class MessageResource {
     public List<Message> getMessages(){
         return ms.getAllMessages();
     }
+    @GET
+    @Path("/{messageId}")
+    @Produces(MediaType.APPLICATION_XML)
+    public Message getMessage(@PathParam("messageId") long messageId){
+        return ms.getMessage(messageId);
+    }
+
+
 }
