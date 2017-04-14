@@ -3,10 +3,7 @@ package com.eightyeight.papillon.endpoints;
 import com.eightyeight.papillon.service.MessageService;
 import com.eightyeight.papillon.dto.Message;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -32,5 +29,12 @@ public class MessageResource {
         return ms.getMessage(messageId);
     }
 
+    @POST
+    //@Produces(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Message> addMessage(Message message){
+        return ms.addMessage(message);
+    }
 
 }
