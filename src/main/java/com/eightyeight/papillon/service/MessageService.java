@@ -18,6 +18,9 @@ public class MessageService {
         messageMap = Database.getMessages();
         messageMap.put(1L,new Message(1,"Hello Debaspreet","debaspreet"));
         messageMap.put(2L,new Message(2,"Hello devopreet","devopreet"));
+        messageMap.put(3L,new Message(3,"Hello Arnab","arnab"));
+        messageMap.put(4L,new Message(4,"Hello Sandhya","jingles"));
+        messageMap.put(5L,new Message(5,"Hello Sandy","momo"));
     }
 
     public List<Message> getAllMessages(){
@@ -34,12 +37,13 @@ public class MessageService {
         return this.getAllMessages();
     }
 
-    public Message updateMessage(Message message){
+    public List<Message> updateMessage(Message message){
         messageMap.put(message.getId(),message);
-        return message;
+        return new ArrayList<Message>(messageMap.values());
     }
 
-    public Message removeMessage(long id){
-        return messageMap.remove(id);
+    public List<Message> removeMessage(long id){
+        messageMap.remove(id);
+        return new ArrayList<Message>(messageMap.values());
     }
 }
