@@ -1,7 +1,11 @@
 package com.eightyeight.papillon.dto;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by papillon on 4/10/2017.
@@ -13,12 +17,14 @@ public class Message {
     private String message;
     private Date created;
     private String author;
+    private Map<Long,Comment> comments;
 
     public Message(long id, String message,String author) {
         this.id = id;
         this.message = message;
         this.created = new Date();
         this.author = author;
+        this.comments = new HashMap<Long, Comment>();
     }
 
     public Message(){}
@@ -53,5 +59,14 @@ public class Message {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    @XmlTransient
+    public Map<Long, Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Map<Long, Comment> comments) {
+        this.comments = comments;
     }
 }
