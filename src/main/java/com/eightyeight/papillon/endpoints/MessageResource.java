@@ -19,11 +19,11 @@ public class MessageResource {
 
     @GET
     //@Produces(MediaType.APPLICATION_XML)
-    public List<Message> getMessages(@QueryParam("year") int year,@QueryParam("start") int start,@QueryParam("size") int size){
-        if(year>0)
-            return ms.getAllMessagesForYear(year);
-        if(start>0 && size > 0)
-            return ms.getAllMessagesPaginated(start,size);
+    public List<Message> getMessages(@BeanParam MessageFilterBean messageFilterBean){
+        if(messageFilterBean.getYear()>0)
+            return ms.getAllMessagesForYear(messageFilterBean.getYear());
+        if(messageFilterBean.getStart()>0 && messageFilterBean.getSize() > 0)
+            return ms.getAllMessagesPaginated(messageFilterBean.getStart(),messageFilterBean.getSize());
         return ms.getAllMessages();
     }
 
