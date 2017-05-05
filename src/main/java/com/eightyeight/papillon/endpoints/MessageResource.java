@@ -52,4 +52,12 @@ public class MessageResource {
     public List<Message> deleteMessage(@PathParam("messageId") long id){
         return ms.removeMessage(id);
     }
+
+
+    @Path("/{messageId}/comments")
+    public CommentResource getCommentResource(){
+        return new CommentResource();
+    }
+
+
 }
