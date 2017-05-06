@@ -15,7 +15,7 @@ public class Message {
 
     private long id;
     private String message;
-    private Date created;
+    private Date created = new Date();
     private String author;
     private Map<Long,Comment> comments = new HashMap<Long, Comment>();
 
