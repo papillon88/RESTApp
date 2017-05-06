@@ -2,6 +2,7 @@ package com.eightyeight.papillon.service;
 
 import com.eightyeight.papillon.database.Database;
 import com.eightyeight.papillon.dto.Message;
+import com.eightyeight.papillon.exceptions.DataNotFoundException;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -49,7 +50,11 @@ public class MessageService {
     }
 
     public Message getMessage(long id){
-        return messageMap.get(id);
+        Message msg = messageMap.get(id);
+        if(msg==null)
+            throw new DataNotFoundException("Message not found for message ID :"+id);
+        else
+            return msg;
     }
 
     /*public List<Message> addMessage(Message message){
