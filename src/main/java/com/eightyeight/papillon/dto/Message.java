@@ -17,14 +17,13 @@ public class Message {
     private String message;
     private Date created;
     private String author;
-    private Map<Long,Comment> comments;
+    private Map<Long,Comment> comments = new HashMap<Long, Comment>();
 
     public Message(long id, String message,String author) {
         this.id = id;
         this.message = message;
         this.created = new Date();
         this.author = author;
-        this.comments = new HashMap<Long, Comment>();
     }
 
     public Message(){}

@@ -15,10 +15,9 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class MessageResource {
 
-    MessageService ms = new MessageService();
+    private static final MessageService ms = new MessageService();
 
     @GET
-    //@Produces(MediaType.APPLICATION_XML)
     public List<Message> getMessages(@BeanParam MessageFilterBean messageFilterBean){
         if(messageFilterBean.getYear()>0)
             return ms.getAllMessagesForYear(messageFilterBean.getYear());
@@ -27,15 +26,14 @@ public class MessageResource {
         return ms.getAllMessages();
     }
 
+
     @GET
     @Path("/{messageId}")
-    //@Produces(MediaType.APPLICATION_XML)
     public Message getMessage(@PathParam("messageId") long messageId){
         return ms.getMessage(messageId);
     }
 
     @POST
-    //@Produces(MediaType.APPLICATION_XML)
     public List<Message> addMessage(Message message){
         return ms.addMessage(message);
     }
@@ -58,6 +56,5 @@ public class MessageResource {
     public CommentResource getCommentResource(){
         return new CommentResource();
     }
-
 
 }

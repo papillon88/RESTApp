@@ -22,6 +22,7 @@ public class MessageService {
         messageMap.put(3L,new Message(3,"Hello Arnab","arnab"));
         messageMap.put(4L,new Message(4,"Hello Sandhya","jingles"));
         messageMap.put(5L,new Message(5,"Hello Sandy","momo"));
+        System.out.println("message service created");
     }
 
     public List<Message> getAllMessages(){

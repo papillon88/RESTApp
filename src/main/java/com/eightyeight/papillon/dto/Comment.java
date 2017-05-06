@@ -1,10 +1,12 @@
 package com.eightyeight.papillon.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 /**
  * Created by papillon on 5/5/2017.
  */
+@XmlRootElement
 public class Comment {
 
     private long id;
@@ -18,6 +20,8 @@ public class Comment {
         this.created = created;
         this.author = author;
     }
+
+    public Comment(){}
 
     public long getId() {
         return id;
