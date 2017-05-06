@@ -4,7 +4,12 @@ import com.eightyeight.papillon.service.MessageService;
 import com.eightyeight.papillon.dto.Message;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 /**
@@ -34,9 +39,18 @@ public class MessageResource {
     }
 
     @POST
-    public List<Message> addMessage(Message message){
+    /*public List<Message> addMessage(Message message){
+
         return ms.addMessage(message);
+    }*/
+    public Response addMessage(@Context UriInfo uriinfo , Message message) throws URISyntaxException {
+        Message msg = ms.addMessage(message);
+        URI uri = uriinfo.getAbsolutePathBuilder().path(String.valueOf(msg.getId())).build();
+        return Response.created(uri)
+                .entity(msg)
+                .build();
     }
+
 
     @PUT
     @Path("/{messageId}")

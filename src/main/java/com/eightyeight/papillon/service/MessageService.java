@@ -52,10 +52,16 @@ public class MessageService {
         return messageMap.get(id);
     }
 
-    public List<Message> addMessage(Message message){
+    /*public List<Message> addMessage(Message message){
         message.setId(messageMap.size()+1);
         messageMap.put(message.getId(),message);
         return this.getAllMessages();
+    }*/
+
+    public Message addMessage(Message message){
+        message.setId(messageMap.size()+1);
+        messageMap.put(message.getId(),message);
+        return messageMap.get(message.getId());
     }
 
     public List<Message> updateMessage(Message message){
