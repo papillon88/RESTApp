@@ -2,10 +2,7 @@ package com.eightyeight.papillon.dto;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by papillon on 4/10/2017.
@@ -18,6 +15,7 @@ public class Message {
     private Date created = new Date();
     private String author;
     private Map<Long,Comment> comments = new HashMap<Long, Comment>();
+    private List<Link> links = new ArrayList<Link>();
 
     public Message(long id, String message,String author) {
         this.id = id;
@@ -67,5 +65,20 @@ public class Message {
 
     public void setComments(Map<Long, Comment> comments) {
         this.comments = comments;
+    }
+
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
+    }
+
+    public void addLinks(String url,String rel){
+        Link link = new Link();
+        link.setLink(url);
+        link.setRel(rel);
+        links.add(link);
     }
 }

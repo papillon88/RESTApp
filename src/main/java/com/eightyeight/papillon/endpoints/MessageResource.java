@@ -1,5 +1,6 @@
 package com.eightyeight.papillon.endpoints;
 
+import com.eightyeight.papillon.dto.Comment;
 import com.eightyeight.papillon.service.MessageService;
 import com.eightyeight.papillon.dto.Message;
 
@@ -34,8 +35,19 @@ public class MessageResource {
 
     @GET
     @Path("/{messageId}")
-    public Message getMessage(@PathParam("messageId") long messageId){
-        return ms.getMessage(messageId);
+    public Message getMessage(@PathParam("messageId") long messageId,
+                              @Context UriInfo uriInfo){
+        Message msg = ms.getMessage(messageId);
+        msg.addLinks(uriInfo.getBaseUriBuilder().path(MessageResource.class)
+                .path(String.valueOf(msg.getId())).build().toString(),"self");
+        msg.addLinks(uriInfo.getBaseUriBuilder().path(ProfileResource.class)
+                .path(msg.getAuthor()).build().toString(),"profile");
+        msg.addLinks(uriInfo.getBaseUriBuilder().path(MessageResource.class)
+                .path(MessageResource.class,"getCommentResource")
+                .path(CommentResource.class)
+                .resolveTemplate("messageId",msg.getId())
+                .build().toString(),"comments");
+        return msg;
     }
 
     @POST
