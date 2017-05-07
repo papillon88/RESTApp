@@ -17,18 +17,32 @@ import java.util.List;
  * Created by papillon on 4/10/2017.
  */
 @Path("/messages")
-@Produces(MediaType.APPLICATION_JSON)
+//@Produces(value = { MediaType.APPLICATION_JSON,MediaType.TEXT_XML } )
 @Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class MessageResource {
 
     private static final MessageService ms = new MessageService();
 
     @GET
-    public List<Message> getMessages(@BeanParam MessageFilterBean messageFilterBean){
+    @Produces(value = { MediaType.APPLICATION_JSON } )
+    public List<Message> getJSONMessages(@BeanParam MessageFilterBean messageFilterBean){
         if(messageFilterBean.getYear()>0)
             return ms.getAllMessagesForYear(messageFilterBean.getYear());
         if(messageFilterBean.getStart()>0 && messageFilterBean.getSize() > 0)
             return ms.getAllMessagesPaginated(messageFilterBean.getStart(),messageFilterBean.getSize());
+        System.out.println("json method called");
+        return ms.getAllMessages();
+    }
+
+    @GET
+    @Produces(value = { MediaType.TEXT_XML } )
+    public List<Message> getXMLMessages(@BeanParam MessageFilterBean messageFilterBean){
+        if(messageFilterBean.getYear()>0)
+            return ms.getAllMessagesForYear(messageFilterBean.getYear());
+        if(messageFilterBean.getStart()>0 && messageFilterBean.getSize() > 0)
+            return ms.getAllMessagesPaginated(messageFilterBean.getStart(),messageFilterBean.getSize());
+        System.out.println("xml method called");
         return ms.getAllMessages();
     }
 
