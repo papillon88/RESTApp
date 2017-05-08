@@ -13,6 +13,6 @@
   <body>
   <a href="webapi/myresources"> REST call : myresources </a>
   <br>
-  <a href="webapi/messages"> REST call : messages </a>
+  <a href="webapi/messages"> REST call : message </a>
   </body>
 </html>
