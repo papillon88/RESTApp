@@ -59,7 +59,7 @@ public class MessageResource {
         msg.addLinks(uriInfo.getBaseUriBuilder().path(MessageResource.class)
                 .path(MessageResource.class,"getCommentResource")
                 .path(CommentResource.class)
-                .resolveTemplate("messageId",msg.getId())
+                .resolveTemplate("messageId",msg.getId())//used for substitution of values
                 .build().toString(),"comments");
         return msg;
     }
