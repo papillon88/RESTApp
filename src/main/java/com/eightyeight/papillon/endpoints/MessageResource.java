@@ -31,7 +31,7 @@ public class MessageResource {
             return ms.getAllMessagesForYear(messageFilterBean.getYear());
         if(messageFilterBean.getStart()>0 && messageFilterBean.getSize() > 0)
             return ms.getAllMessagesPaginated(messageFilterBean.getStart(),messageFilterBean.getSize());
-        System.out.println("json method called");
+        System.out.println("JSON method called");
         return ms.getAllMessages();
     }
 
@@ -42,7 +42,7 @@ public class MessageResource {
             return ms.getAllMessagesForYear(messageFilterBean.getYear());
         if(messageFilterBean.getStart()>0 && messageFilterBean.getSize() > 0)
             return ms.getAllMessagesPaginated(messageFilterBean.getStart(),messageFilterBean.getSize());
-        System.out.println("xml method called");
+        System.out.println("XML method called");
         return ms.getAllMessages();
     }
 
